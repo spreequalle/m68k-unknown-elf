@@ -20,13 +20,13 @@ RUN wget ${src_binutils} && wget ${src_gcc}
 RUN tar xf $(basename ${src_binutils}) && \
 mkdir binutils && cd binutils && \
 ../$(basename ${src_binutils} .tar.bz2)/configure --prefix=${prefix} --target=m68k-unknown-elf && \
-make -j$(nproc) && make install
+make -s -j$(nproc) && make install
 
 # build gcc
 RUN tar xf $(basename ${src_gcc}) && \
 mkdir gcc && cd gcc && \
 ../$(basename ${src_gcc} .tar.bz2)/configure --prefix=${prefix} --target=m68k-unknown-elf --enable-languages=c --disable-libssp && \
-make -j$(nproc) && make install
+make -s -j$(nproc) && make install
 
 # cleanup
 RUN apk del build-base texinfo && rm -rf ${wd_build}
