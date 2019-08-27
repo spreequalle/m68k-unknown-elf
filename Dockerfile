@@ -1,7 +1,7 @@
 FROM alpine:3.10
 
 ENV wd_build /build
-ENV prefix '/opt/m68k-unknown-elf'
+ARG prefix='/opt/m68k-unknown-elf'
 ENV PATH="${PATH}:${prefix}/bin"
 
 ENV src_binutils 'https://ftp.gnu.org/gnu/binutils/binutils-2.28.1.tar.bz2'
